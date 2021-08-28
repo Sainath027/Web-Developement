@@ -1,0 +1,399 @@
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Sudoko Solver visualization</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <nav class="app-bar">
+        <div class="bar-font title"><h1>&nbsp;📘 &nbsp;Sudoku</h1></div>
+        <button id="solve-btn" style="display: none;" onclick="solveButtonClick()"
+            class="button bar-button more-button">
+            <span class="material-icons">border_color</span>
+            <span>Solve</span>
+        </button>
+    </nav>
+    <div class="body" id="sudoku">
+        <div class="card game">
+            <table id="puzzle-grid">
+                <tbody>
+                    <tr>
+                        <td>
+                            <input id="block-00" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-01" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-02" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+
+                        <td>
+                            <input id="block-03"  type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-04" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-05"  type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+
+                        <td>
+                            <input id="block-06" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-07"  type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-08" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <input id="block-10" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-11" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-12"type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+
+                        <td>
+                            <input id="block-13" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-14" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-15" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+
+                        <td>
+                            <input id="block-16" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-17" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input  id="block-18" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <input id="block-20" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-21" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-22" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+
+                        <td>
+                            <input id="block-23" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-24"  type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-25" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+
+                        <td>
+                            <input id="block-26" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-27" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-28" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <input id="block-30" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-31" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-32" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+
+                        <td>
+                            <input id="block-33" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-34"type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-35" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+
+                        <td>
+                            <input id="block-36" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-37" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-38" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <input id="block-40" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-41" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-42" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+
+                        <td>
+                            <input id="block-43" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-44" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-45" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+
+                        <td>
+                            <input id="block-46" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-47" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-48" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <input id="block-50" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-51" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-52" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+
+                        <td>
+                            <input id="block-53" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-54" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-55" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+
+                        <td>
+                            <input id="block-56" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-57" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-58" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <input id="block-60" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-61" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-62" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+
+                        <td>
+                            <input id="block-63" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-64" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-65" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+
+                        <td>
+                            <input id="block-66" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-67" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-68" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <input id="block-70" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-71" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-72" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+
+                        <td>
+                            <input id="block-73" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-74" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-75" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+
+                        <td>
+                            <input id="block-76" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-77" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-78" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <input id="block-80" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-81" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-82" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+
+                        <td>
+                            <input id="block-83" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-84" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-85" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+
+                        <td>
+                            <input id="block-86" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-87" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                        <td>
+                            <input id="block-88" type="text" maxlength="1" onchange="checkInput(this)" disabled="">
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <div class="buttons">
+                <button id="generate">&nbsp;Generate&nbsp;</button>
+                <button id="solve">&nbsp;solve&nbsp;</button>
+                <button id="visualize">&nbsp;visualize&nbsp;</button>
+            </div>
+        </div>
+
+        <div class="card status">
+            <div id="game-number">game #0</div>
+            <ul class="game-status">
+                <li>
+                    <div class="vertical-adjust">
+                        <span class="material-icons">timer</span>
+                        <span id="timer-label0">Time-User</span>
+                    </div>
+                    <div id="timer0" class="timer">00:00</div>
+                </li>
+                    <div class="vertical-adjust">
+                        <span class="material-icons">timer</span>
+                        <span id="timer-label1">Time-Computer</span>
+                    </div>
+                    <div id="timer1" class="timer">00:00</div>
+                <li>
+
+                </li>
+                <li>
+                    <div class="vertical-adjust">
+                        <span class="material-icons">grid_on</span>
+                        <span>Remaining numbers</span>
+                    </div>
+                    <div class="remain-table">
+                        <div class="remain-column">
+                            <div class="remain-cell">
+                                <div class="remain-cell-header">1</div>
+                                <div onchange="document.write('Hello');" id="remain-1" class="remain-cell-content">0
+                                </div>
+                            </div>
+                            <div class="remain-cell">
+                                <div class="remain-cell-header">4</div>
+                                <div id="remain-4" class="remain-cell-content">0</div>
+                            </div>
+                            <div class="remain-cell">
+                                <div class="remain-cell-header">7</div>
+                                <div id="remain-7" class="remain-cell-content">0</div>
+                            </div>
+                        </div>
+                        <div class="remain-column">
+                            <div class="remain-cell">
+                                <div class="remain-cell-header">2</div>
+                                <div id="remain-2" class="remain-cell-content">0</div>
+                            </div>
+                            <div class="remain-cell">
+                                <div class="remain-cell-header">5</div>
+                                <div id="remain-5" class="remain-cell-content">0</div>
+                            </div>
+                            <div class="remain-cell">
+                                <div class="remain-cell-header">8</div>
+                                <div id="remain-8" class="remain-cell-content">0</div>
+                            </div>
+                        </div>
+                        <div class="remain-column">
+                            <div class="remain-cell">
+                                <div class="remain-cell-header">3</div>
+                                <div id="remain-3" class="remain-cell-content">0</div>
+                            </div>
+                            <div class="remain-cell">
+                                <div class="remain-cell-header">6</div>
+                                <div id="remain-6" class="remain-cell-content">0</div>
+                            </div>
+                            <div class="remain-cell">
+                                <div class="remain-cell-header">9</div>
+                                <div id="remain-9" class="remain-cell-content">0</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
