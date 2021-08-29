@@ -66,7 +66,7 @@ generate.addEventListener('click', function () {
     for (let j = 0; j < 9; j++) {
       if (arr[i][j] == 0) {
         sudoko[i][j].removeAttribute('disabled');
-        sudoko[i][j].value = " ";
+        sudoko[i][j].value = "";
       }
       else {
         sudoko[i][j].value = arr[i][j];
@@ -89,7 +89,7 @@ async function solveSudoko(board) {
 
   for (var i = 0; i < 9; i++) {
     for (var j = 0; j < 9; j++) {
-      if (board[i][j].value !== " ") continue;
+      if (board[i][j].value !== "") continue;
       for (var k = 1; k <= 9; k++) {
 
         await sleep(1)
@@ -101,7 +101,7 @@ async function solveSudoko(board) {
               return true;
             } else {
 
-              board[i][j].value = ' ';
+              board[i][j].value = '';
               remaining[k - 1].textContent = remaining[k - 1].textContent - 1 + 2;
             }
           }
