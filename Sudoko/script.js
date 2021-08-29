@@ -7,16 +7,16 @@
 // [0, 9, 0, 0, 0, 2, 7, 3, 0],
 // [0, 0, 1, 0, 0, 0, 0, 0, 5],
 // [0, 6, 0, 0, 0, 0, 2, 1, 9]];
-const arr=[
-  [1,2,3,0,0,0,0,8,9],
-  [0,0,0,0,0,0,4,5,6],
-  [0,0,0,7,8,9,0,0,0],
-  [2,3,4,0,0,0,0,0,0],
-  [0,0,0,0,0,0,5,6,7],
-  [0,0,0,8,9,1,0,0,0],
-  [3,4,5,0,0,0,0,0,0],
-  [0,0,0,0,0,0,6,7,8],
-  [0,0,0,9,1,2,0,0,0]
+const arr = [
+  [1, 2, 3, 0, 0, 0, 0, 8, 9],
+  [0, 0, 0, 0, 0, 0, 4, 5, 6],
+  [0, 0, 0, 7, 8, 9, 0, 0, 0],
+  [2, 3, 4, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 5, 6, 7],
+  [0, 0, 0, 8, 9, 1, 0, 0, 0],
+  [3, 4, 5, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 6, 7, 8],
+  [0, 0, 0, 9, 1, 2, 0, 0, 0]
 ];
 // const arr=[
 //   [9,8,7,0,0,0,0,0,0],
@@ -79,7 +79,7 @@ generate.addEventListener('click', function () {
   document.body.style.background = "rgb(235, 235, 240)";
 });
 
-async function sleep(ts){
+async function sleep(ts) {
   return new Promise((resolve, reject) => {
     return setTimeout(resolve, ts)
   })
@@ -93,18 +93,18 @@ async function solveSudoko(board) {
       for (var k = 1; k <= 9; k++) {
 
         await sleep(1)
-          if (isValid(board, i, j, k)) {
-            board[i][j].value = k;
-            remaining[k - 1].textContent = remaining[k - 1].textContent - 1;
-            if (await solveSudoko(board)) {
-              console.log(board);
-              return true;
-            } else {
+        if (isValid(board, i, j, k)) {
+          board[i][j].value = k;
+          remaining[k - 1].textContent = remaining[k - 1].textContent - 1;
+          if (await solveSudoko(board)) {
+            console.log(board);
+            return true;
+          } else {
 
-              board[i][j].value = '';
-              remaining[k - 1].textContent = remaining[k - 1].textContent - 1 + 2;
-            }
+            board[i][j].value = '';
+            remaining[k - 1].textContent = remaining[k - 1].textContent - 1 + 2;
           }
+        }
       }
       return false;
     }
@@ -125,16 +125,16 @@ function computer() {
   computertime.textContent = seconds / 60 + ":" + seconds % 60;
   seconds++;
 };
-let running_visualize=0;
+let running_visualize = 0;
 //
 visualize.addEventListener('click', async function () {
   //setInterval()
-  var seconds=0;
-  var interval = setInterval(function() {
-    computertime.textContent=Math.floor(seconds / 60) + ":" + seconds % 60;
+  var seconds = 0;
+  var interval = setInterval(function () {
+    computertime.textContent = Math.floor(seconds / 60) + ":" + seconds % 60;
     seconds++;
-}, 1000);
-  var abc =  await solveSudoko(sudoko);
+  }, 1000);
+  var abc = await solveSudoko(sudoko);
   console.log(abc);
   if (abc)
     document.body.style.background = "green";
@@ -144,19 +144,24 @@ visualize.addEventListener('click', async function () {
   clearInterval(interval);
   generate.removeAttribute("disabled");
 });
-let running_solve=0;
-solve.addEventListener( 'click',function() {
-  if(running_solve==0){
-    running_solve=1;
-    var seconds=0;
-    var interval = setInterval(function() {
-      usertime.textContent=Math.floor(seconds / 60) + ":" + seconds % 60;
+let running_solve = 0;
+let prev=0;
+solve.addEventListener('click', function () {
+  if (running_solve == 0) {
+    solve.innerHTML = '&nbsp;&nbsp;' + "stop" + '&nbsp;&nbsp;';
+    running_solve = 1;
+    var seconds = prev;
+    var interval = setInterval(function () {
+      usertime.textContent = Math.floor(seconds / 60) + ":" + seconds % 60;
       seconds++;
-      if(running_solve==0)
+      if (running_solve == 0) {
+        solve.innerHTML = '&nbsp;'+"solve"+'&nbsp;';
+        prev=seconds;
         clearInterval(interval);
-  }, 1000);
-  }else{
-    running_solve=0;
-    seconds=0;
+      }
+    }, 1000);
+  } else {
+    running_solve = 0;
+    seconds = 0;
   }
 });
