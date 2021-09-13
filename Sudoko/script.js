@@ -144,7 +144,14 @@ visualize.addEventListener('click', async function () {
   //setInterval()
   var seconds = 0;
   var interval = setInterval(function () {
-    computertime.textContent = Math.floor(seconds / 60) + ":" + seconds % 60;
+    //computertime.textContent = Math.floor(seconds / 60) + ":" + seconds % 60;
+    let min=Math.floor(seconds / 60);
+    let sec=seconds % 60;
+    if(min<10)
+      min='0'+min;
+    if(sec<=9)
+      sec='0'+sec;
+    computertime.textContent = min + ":" + sec;
     seconds++;
   }, 1000);
   var abc = await solveSudoko(sudoko);
