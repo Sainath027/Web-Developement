@@ -18,6 +18,18 @@ const arr = [
   [0, 0, 0, 0, 0, 0, 6, 7, 8],
   [0, 0, 0, 9, 1, 2, 0, 0, 0]
 ];
+const ans = [
+  [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  [7, 8, 9, 1, 2, 3, 4, 5, 6],
+  [4, 5, 6, 7, 8, 9, 1, 2, 3],
+  [2, 3, 4, 5, 6, 7, 8, 9, 1],
+  [8, 9, 1, 2, 3, 4, 5, 6, 7],
+  [5, 6, 7, 8, 9, 1, 2, 3, 4],
+  [3, 4, 5, 6, 7, 8, 9, 1, 2],
+  [9, 1, 2, 3, 4, 5, 6, 7, 8],
+  [6, 7, 8, 9, 1, 2, 3, 4, 5]
+];
+var check=0;
 // const arr=[
 //   [9,8,7,0,0,0,0,0,0],
 //   [0,0,0,9,8,7,0,0,0],
@@ -52,6 +64,7 @@ for (let i = 0; i < 9; i++) {
   for (let j = 0; j < 9; j++) {
     const str = "#block-" + i + j;
     sudoko[i][j] = document.querySelector(str);
+    sudoko[i][j].addEventListener("input", remainingUpdate);
   }
 }
 //Generate Function
@@ -147,12 +160,37 @@ visualize.addEventListener('click', async function () {
 let running_solve = 0;
 let prev=0;
 solve.addEventListener('click', function () {
-  if (running_solve == 0) {
+  if(check===1){
+    console.log(123456789);
+    check=0;
+    let flag=1;
+    for(let i=0;i<9;i++){
+      for(let j=0;j<9;j++){
+        if(sudoko[i][j].value==ans[i][j])
+          continue;
+        flag=0;
+      }
+      if(flag===0){
+        break;
+      }
+    }
+  if (flag===0)
+    document.body.style.background = "red";
+  else 
+    document.body.style.background = "green";
+  }
+  else if (running_solve == 0) {
     solve.innerHTML = '&nbsp;&nbsp;' + "stop" + '&nbsp;&nbsp;';
     running_solve = 1;
     var seconds = prev;
     var interval = setInterval(function () {
-      usertime.textContent = Math.floor(seconds / 60) + ":" + seconds % 60;
+      let min=Math.floor(seconds / 60);
+      let sec=seconds % 60;
+      if(min<10)
+        min='0'+min;
+      if(sec<=9)
+        sec='0'+sec;
+      usertime.textContent = min + ":" + sec;
       seconds++;
       if (running_solve == 0) {
         solve.innerHTML = '&nbsp;'+"solve"+'&nbsp;';
@@ -165,3 +203,32 @@ solve.addEventListener('click', function () {
     seconds = 0;
   }
 });
+function remainingUpdate() {
+  console.log("haiiiiiii");
+  let a = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+  for (let i = 0; i < 9; i++) {
+    for (let j = 0; j < 9; j++) {
+      let temp = sudoko[i][j].value;
+      if (temp === "")
+        continue;
+      a[temp - 1]++;
+    }
+  }
+  for(let i=0;i<9;i++){
+    remaining[i].textContent=9-a[i];
+  }
+  console.log(a);
+  let count=0;
+  for(let i=0;i<9;i++){
+    if(a[i]===9)
+      count++;
+  }
+  if(count===9)
+  {
+    solve.innerHTML = '&nbsp;' + "check" + '&nbsp;';
+    check=1;
+  }
+}
+function checkInput(a) {
+
+}
